@@ -1,0 +1,116 @@
+---
+title: "Final Project Evaluation"
+author: "Group 12"
+date: "2025-11-07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+knitr::opts_knit$set(root.dir = "~/Downloads/STAT107 halfway project/books_1910s")
+
+knitr::opts_knit$set(root.dir = "~/Downloads/STAT107 halfway project/books_2010s")
+```
+
+```{r}
+source("00_requirement.R")
+search()
+```
+
+
+**DATA FROM 1910s:**
+```{r}
+#Loading and cleaning 1910s books
+files <- list.files(pattern = "\\.txt$")
+files
+
+books_1910s <- lapply(files, function(f) {
+  readLines(f, encoding = "UTF-8") %>%
+    str_trim() %>% #removes leading/trailing whitespace
+    str_replace_all("\n", " ") %>%  # remove newline characters
+    str_flatten(collapse = " ") %>%  # combine with spaces
+    str_squish() %>%  # remove extra whitespace
+    str_to_lower() #make lowercase
+  
+})
+names(books_1910s) <- files
+
+# check second book
+names(books_1910s)[2]
+nchar(books_1910s[[2]])  # Character count
+substr(books_1910s[[2]], 1, 200)  # First 200 characters
+
+
+```
+
+```{r}
+#Checking first 200 characters of unclean data (1910s)
+substr(books_1910s[[2]], 1, 200) 
+```
+
+
+```{r}
+#Filtering out stop words (1910s)
+stop_words <- c("a", "an", "the", "but", "or", "that", "so", "of", "to", "in", "for", "with", "for", "i")
+pattern <- paste0("\\b(", paste(stop_words,collapse = "|"), ")\\b")
+cleaned_text_1910s <- str_replace_all(books_1910s,regex(pattern, ignore_case = TRUE),"")
+```
+
+
+```{r}
+#Checking first 200 characters of cleaned data (1910s)
+substr(cleaned_text_1910s[[2]], 1, 200) 
+```
+
+
+
+
+
+
+
+
+
+**DATA FROM 2010s:**
+```{r}
+#Loading and cleaning 1910s books
+files <- list.files(pattern = "\\.txt$")
+files
+
+books_2010s <- lapply(files, function(f) {
+  readLines(f, encoding = "UTF-8") %>%
+    str_trim() %>% #removes leading/trailing whitespace
+    str_replace_all("\n", " ") %>%  # remove newline characters
+    str_flatten(collapse = " ") %>%  # combine with spaces
+    str_squish() %>%  # remove extra whitespace
+    str_to_lower() #make lowercase
+  
+})
+names(books_2010s) <- files
+
+# check second book
+names(books_2010s)[2]
+nchar(books_2010s[[2]])  # Character count
+substr(books_2010s[[2]], 1, 200)  # First 200 characters
+
+
+```
+
+```{r}
+#Checking first 200 characters of unclean data (1910s)
+substr(books_2010s[[2]], 1, 200) 
+```
+
+
+```{r}
+#Filtering out stop words (1910s)
+stop_words <- c("a", "an", "the", "but", "or", "that", "so", "of", "to", "in", "for", "with", "for", "i")
+pattern <- paste0("\\b(", paste(stop_words,collapse = "|"), ")\\b")
+cleaned_text_2010s <- str_replace_all(books_2010s,regex(pattern, ignore_case = TRUE),"")
+```
+
+
+```{r}
+#Checking first 200 characters of cleaned data (1910s)
+substr(cleaned_text_2010s[[2]], 1, 200) 
+```
