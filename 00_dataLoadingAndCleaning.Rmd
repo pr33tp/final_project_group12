@@ -73,7 +73,7 @@ substr(cleaned_text_1910s[[2]], 1, 200)
 
 **DATA FROM 2010s:**
 ```{r}
-#Loading and cleaning 1910s books
+#Loading and cleaning 2010s books
 files <- list.files(pattern = "\\.txt$")
 files
 
@@ -103,7 +103,7 @@ substr(books_2010s[[2]], 1, 200)
 
 
 ```{r}
-#Filtering out stop words (1910s)
+#Filtering out stop words (2010s)
 stop_words <- c("a", "an", "the", "but", "or", "that", "so", "of", "to", "in", "for", "with", "for", "i")
 pattern <- paste0("\\b(", paste(stop_words,collapse = "|"), ")\\b")
 cleaned_text_2010s <- str_replace_all(books_2010s,regex(pattern, ignore_case = TRUE),"")
@@ -111,6 +111,6 @@ cleaned_text_2010s <- str_replace_all(books_2010s,regex(pattern, ignore_case = T
 
 
 ```{r}
-#Checking first 200 characters of cleaned data (1910s)
+#Checking first 200 characters of cleaned data (2010s)
 substr(cleaned_text_2010s[[2]], 1, 200) 
 ```
