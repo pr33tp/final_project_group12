@@ -97,7 +97,7 @@ substr(books_2010s[[2]], 1, 200)  # First 200 characters
 ```
 
 ```{r}
-#Checking first 200 characters of unclean data (1910s)
+#Checking first 200 characters of unclean data (2010s)
 substr(books_2010s[[2]], 1, 200) 
 ```
 
