@@ -1,0 +1,21 @@
+---
+title: "Final Project Evaluation"
+author: "Group 12"
+date: "2025-11-07"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load_functions}
+source("00_requirement.R")
+source("00_dataLoadingAndCleaning.Rmd")
+source("01_getWordLengths.R")
+source("02_avgWordLengths.R")
+source("03_graphsAndVisuals.R")
+```
+
