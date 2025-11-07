@@ -1,5 +1,5 @@
 List of Files (to be run in order):
-1.	00_requirements.R - calls our necessary libraries to run our code.
+1.	00_requirement.R - calls our necessary libraries to run our code.
   
 2.	00_dataLoadingAndCleaning.Rmd - loads our data and cleans it, removing unnecessary whitespace, newlines, and stop words like "a", "I", "the", etc.
   
