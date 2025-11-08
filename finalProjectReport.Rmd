@@ -26,7 +26,7 @@ source("03_graphsAndVisuals.R")
 
 
 **INTRODUCTION**
-
+The purpose of this analysis is to observe how writing styles have changed over time through literature. By examining the 1990s and the 2010s, through research, we aim to determine whether books from an older time period (1990s) use longer words than those from the newer period (2010s). This analysis may benefit educators and scientists who are curious about studying language trends. This research tests the hypothesis that books from the 1990s use longer words (thus having longer sentences) than books from the 2010s. By comparing literature texts from different decades, this will expose how literature has changed over time and uncover the educational shifts in writing.
 
 
 **DATA**
@@ -39,13 +39,14 @@ We have not gotten to the visualization portion yet but we have begun working on
 
 
 **ANALYSIS**
-
+For this project, we have already cleaned stop words such as “i,” “if,” and “or” and punctuation so that the focus can be on the more meaningful words. The average word length and sentence length for each ten books from either decade (the 1990s and the 2010s) will be calculated. Summary statistics such as mean and median will be used to compare texts from either decade, which will answer the question of whether books from the 1990s have longer sentences than books from the 2010s. Furthermore, to test where the differences are significant, a t-test will be used to compare the mean of the word lengths from the texts from both decades. 
 
 **TEAM CONTRIBUTIONS**
 -Preet Patel: created Github respiratory, downloaded and organized 10 novels, loaded all novels did all data cleaning, created 00_requirement.R source, wrote abstract, data, and visualization portions on report
 
 -Dragon He: created README, created R source code and functions for analysis, started visualizations, created/setup Final Report rmd.
 
-Imani Odunze: downloaded and organized 10 novels
+Imani Odunze: downloaded and organized 10 novels, wrote introduction and analysis for report.
+
 
 
