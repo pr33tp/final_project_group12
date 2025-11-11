@@ -6,15 +6,17 @@ average_word_length_per_book <- function(book_list) {
 
 #comparing the decades we have right now (1910 and 2010; may be subject to change once we add more)
 compare_decades <- function(books_1910s, books_2010s) {
-  #makes avg variables
   avg_1910s <- average_word_length_per_book(books_1910s)
   avg_2010s <- average_word_length_per_book(books_2010s)
   
-  #put into data frame to compare easily
-  data.frame(
+  avg_lengths_df <- data.frame(
     decade = c(rep("1910s", length(avg_1910s)),
                rep("2010s", length(avg_2010s))),
     book = c(names(avg_1910s), names(avg_2010s)),
     avg_word_length = c(avg_1910s, avg_2010s)
   )
+  
+  return(avg_lengths_df)
 }
+
+avg_lengths_df <- compare_decades(books_1910s, books_2010s)
