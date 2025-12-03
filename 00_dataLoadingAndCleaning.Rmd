@@ -2,13 +2,15 @@
 title: "Final Project Evaluation"
 author: "Group 12"
 date: "2025-11-07"
-output: html_document
+output:
+  word_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-knitr::opts_knit$set(root.dir = "C:/Users/didih/Downloads/stat107_final_project")
+knitr::opts_knit$set(root.dir = rprojroot::find_root('.here'))
 
 ```
 
@@ -60,16 +62,6 @@ cleaned_text_1910s <- str_replace_all(books_1910s,regex(pattern, ignore_case = T
 #Checking first 200 characters of cleaned data (1910s)
 substr(cleaned_text_1910s[[2]], 1, 200) 
 ```
-
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-
-knitr::opts_knit$set(root.dir = "~/Downloads/stat107_finalproject/books_2010s")
-
-```
-
-
 
 **DATA FROM 2010s:**
 ```{r}
