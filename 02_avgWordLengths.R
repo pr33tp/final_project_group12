@@ -18,5 +18,3 @@ compare_decades <- function(books_1910s, books_2010s) {
   
   return(avg_lengths_df)
 }
-
-avg_lengths_df <- compare_decades(books_1910s, books_2010s)

@@ -3,20 +3,27 @@ title: "Comparing Novels from the 1910s and 2010s"
 author: "Group 12: Preet Patel, Dragon He, Imani Odunze"
 date: "2025-11-07"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = getwd())
 ```
 
 ```{r load_functions}
 source("00_requirements.R")
-source("00_dataLoadingAndCleaning.R")
 source("01_getWordLengths.R")
 source("02_avgWordLengths.R")
 source("03_graphsAndVisuals.R")
+
+books_1910s <- lapply(list.files("books_1910s", full.names = TRUE), read_file)
+books_2010s <- lapply(list.files("books_2010s", full.names = TRUE), read_file)
+
+names(books_1910s) <- basename(list.files("books_1910s"))
+names(books_2010s) <- basename(list.files("books_2010s"))
+
+avg_lengths_df <- compare_decades(books_1910s, books_2010s)
 ```
 
 #ABSTRACT
@@ -24,7 +31,7 @@ source("03_graphsAndVisuals.R")
 
 
 #INTRODUCTION
-The purpose of this analysis is to observe how writing styles have changed over time through literature. By examining the 1990s and the 2010s, through research, we aim to determine whether books from an older time period (1990s) use longer words than those from the newer period (2010s). This analysis may benefit educators and scientists who are curious about studying language trends. This research tests the hypothesis that books from the 1990s use longer words (thus having longer sentences) than books from the 2010s. By comparing literature texts from different decades, this will expose how literature has changed over time and uncover the educational shifts in writing.
+The purpose of this analysis is to observe how writing styles have changed over time through literature. By examining the 1990s and the 2010s, through research, we aim to determine whether books from an older time period (1910s) use longer words than those from the newer period (2010s). This analysis may benefit educators and scientists who are curious about studying language trends. This research tests the hypothesis that books from the 1990s use longer words (thus having longer sentences) than books from the 2010s. By comparing literature texts from different decades, this will expose how literature has changed over time and uncover the educational shifts in writing.
 
 
 #DATA
@@ -36,83 +43,34 @@ The purpose of this analysis is to observe how writing styles have changed over 
 
 ## Boxplot
 ```{r}
-#boxplot to visualize
-plot_word_length_comparison <- function(df) {
-  ggplot(df, aes(x = decade, y = avg_word_length, fill = decade)) +
-    geom_boxplot() +
-    labs(
-      title = "Average Word Lengths: 1910s vs 2010s",
-      x = "Decade",
-      y = "Average Word Length"
-    ) +
-    theme_minimal()
-}
-
-p <- plot_word_length_comparison(avg_lengths_df)
-p
-aggregate(avg_word_length ~ decade, data = avg_lengths_df, mean)
-
+p_box <- plot_word_length_comparison(avg_lengths_df)
+p_box
 ```
 
 
 ## Violin Plot
 ```{r}
-#violin plot
-ggplot(avg_lengths_df, aes(x = decade, y = avg_word_length, fill = decade)) +
-  geom_violin(trim = FALSE) +
-  labs(
-    title = "Distribution of Word Lengths by Decade",
-    x = "Decade",
-    y = "Average Word Length"
-  ) +
-  theme_minimal()
-
+p_violin <- plot_violin(avg_lengths_df)
+p_violin
 ```
 
 
 ## Density Plot
 ```{r}
-#density plot
-ggplot(avg_lengths_df, aes(x = avg_word_length, fill = decade)) +
-  geom_density(alpha = 0.5) +
-  labs(
-    title = "Density of Word Lengths by Decade",
-    x = "Average Word Length",
-    y = "Density"
-  ) +
-  theme_minimal()
-
+p_density <- plot_density(avg_lengths_df)
+p_density
 ```
 
 
 ## Line Plot
 ```{r}
-#line plot
-avg_lengths_df$book_id <- seq_len(nrow(avg_lengths_df))
-ggplot(avg_lengths_df, aes(x = book_id, y = avg_word_length, group = decade, color = decade)) +
-  geom_line() +
-  geom_point() +
-  labs(
-    title = "Word Length Trend Across Books",
-    x = "Book",
-    y = "Average Word Length"
-  ) +
-  theme_minimal()
+plot_line(avg_lengths_df)
 ```
 
 
 ## Histogram
 ```{r}
-#histogram
-ggplot(avg_lengths_df, aes(x = avg_word_length)) +
-  geom_histogram(bins = 20, fill = "steelblue") +
-  facet_wrap(~ decade, scales = "free_y") +
-  labs(
-    title = "Histograms of Word Lengths by Decade",
-    x = "Average Word Length",
-    y = "Count"
-  ) +
-  theme_minimal()
+plot_histogram(avg_lengths_df)
 ```
 
 
