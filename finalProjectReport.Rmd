@@ -83,6 +83,6 @@ For this project, we have already cleaned stop words such as “i,” “if,” 
 #TEAM CONTRIBUTIONS
 -Preet Patel: created Github respiratory, downloaded and organized 20 novels, loaded all novels did all data cleaning, created 00_requirement.R source, wrote abstract, data, and visualization portions on report, complied final report.
 
--Dragon He: created README, created R source code and functions for analysis, created plots, setup final report rmd
+-Dragon He: Created, updated, and finalized README file. Created, coded, tested, and debugged 00_requirements.R for future code, 01_getWordLengths.R to store word lengths, 02_avgWordLengths.R to average the word lengths, and 03_graphsAndVisuals.R to make graphs. Tested and debugged 00_dataLoadingAndCleaning.RMD. Tested and debugged finalProjectReport.RMD. Coded and debugged every graph. Displayed graphs in finalProjectReport for analysis. Debugged knitting issues, allowing the final project report to be knitted.
 
 Imani Odunze: downloaded and organized 10 novels, wrote introduction and analysis for report.
